@@ -41,6 +41,7 @@ series and forecast horizons are involved.
 
 ```
 **Validation**
+https://stats.stackexchange.com/questions/14099/using-k-fold-cross-validation-for-time-series-model-selection
 5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
 
 **Model split**

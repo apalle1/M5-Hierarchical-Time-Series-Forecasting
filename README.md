@@ -39,7 +39,7 @@ series and forecast horizons are involved.
 
 ## Other ideas
 
-'''
+```
 **Validation**
 5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
 
@@ -60,7 +60,7 @@ for each store
     .
     .
     model s10 predicts F01, F02, …, F28
-'''
+```
 
 write about lightgbm ?
 

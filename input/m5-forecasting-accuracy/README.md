@@ -1,4 +1,4 @@
-Download link: https://www.kaggle.com/c/m5-forecasting-accuracy/data
+Data download link: https://www.kaggle.com/c/m5-forecasting-accuracy/data
 
 ```
 sales_train_validation.csv - Contains the historical daily unit sales data per product and store [d_1 - d_1913]

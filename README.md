@@ -62,11 +62,4 @@ for each store
     model s10 predicts F01, F02, …, F28
 ```
 
-write about lightgbm ?
-
-CV
-
-Explain about data 
-
-
 

@@ -2,6 +2,10 @@
 
 whats the competition about?
 
+write about features ?
+
+write about lightgbm ?
+
 CV
 
 Explain about data 

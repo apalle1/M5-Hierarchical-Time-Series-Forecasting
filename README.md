@@ -69,11 +69,11 @@ series and forecast horizons are involved.
 ## Other ideas
 
 ```
-1 Validation
+1) Validation
 https://stats.stackexchange.com/questions/14099/using-k-fold-cross-validation-for-time-series-model-selection
 5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
 
-2 Model split
+2) Model split
 for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
   for each dept (7 departments - HOBBIES_1, HOBBIES_2, HOUSEHOLD_1, HOUSEHOLD_2, FOODS_1, FOODS_2, FOODS_3)
     model d1 predicts F01, F02, …, F28

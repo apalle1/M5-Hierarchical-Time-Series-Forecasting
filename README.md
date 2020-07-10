@@ -6,9 +6,11 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 ## Recursive features - Update Target before lag/rolling calculations.
 
+In below example, by predicting d_1914 you can calculate your features for d_1915 and so on…
+
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
 
-Explanation:
+Detailed Explanation:
 
 * Assume that we need to predict day 1920
 * We have a feature - "rolling mean" with 7 days window

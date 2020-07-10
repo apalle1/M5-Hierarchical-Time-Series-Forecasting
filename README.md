@@ -18,7 +18,7 @@ If you think the underlying data has a tweedie-distribution, you might want to u
 **Validation**
 1 holdout (d1914-d1941)
 
-**Model split**
+**Training Strategy**
 for each store
     model s1 predicts F01, F02, …, F28
     model s2 predicts F01, F02, …, F28

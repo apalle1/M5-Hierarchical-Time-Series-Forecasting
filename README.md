@@ -6,7 +6,7 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 ## Implementation
 
-Recursive features
+## Recursive features
 
 Rollings are calculated this way because we need to update our Target before rolling calculations.
 

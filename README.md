@@ -91,11 +91,6 @@ for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2
     model s10 predicts F01, F02, …, F28
 ```
 
-Weekdays lags
-Rolling lags
-Calendar features and events 
-Price features
-
 ## Features
 
 
@@ -124,7 +119,7 @@ OrthodoxChristmas, MartinLutherKingDay, Easter]
 
 * Supplement Nutrition Assistance Program (SNAP) : [0, 1]
   
-* Price
+* Price features
  
 * Category
    * stateid, storeid, catid, deptid, item_id 

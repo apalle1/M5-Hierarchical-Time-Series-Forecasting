@@ -8,6 +8,9 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 ## Recursive features
 
+
+![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
+
 Rollings are calculated this way because we need to update our Target before rolling calculations.
 
 Example:

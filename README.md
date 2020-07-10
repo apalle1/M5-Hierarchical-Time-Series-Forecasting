@@ -18,7 +18,7 @@ In below example, by predicting d_1914 we can calculate features for predicting 
 Detailed Explanation:
 
 * Assume that we need to predict day 1920
-* We have a feature - "rolling mean" with 7 days window
+* We have a feature - rolling mean with 7 days window
 * To calculate such feature we need Target for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
 * With training set in our hands we have only Target for day 1913 (Test set Target is Nan)
 * Thats why we do recursive predictions and rolling calculations for 1914, 1915, 1916, 1917, 1918, 1919 … days.
@@ -27,7 +27,7 @@ Detailed Explanation:
     * calculate rollings for 1916, predict 1916 etc
 * We avoid Nans and feed our model with valuable information.
 
-The above table was just an example to show the idea behind iterative prediction. I don't use lags under 7 in my model.
+The above table was just an example to show the idea behind recursive prediction. I don't use lags under 7 in my model.
 If you use recent demand values, the model will predict almost the same values for the next 28 days. And lag_1 seems to 
 be the worst one to be added. If you use recent demand values, for example lag_1, the model will give high importance to
 that feature. Then if you are using predictions to make other predictions from period t0 to t28 each time you predict
@@ -79,7 +79,9 @@ that feature from predictions you have really big chance of overfitting unless y
 * 1 holdout (d1914-d1941)
 
 ## Model split
-* for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
+
+```
+for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
     model s1 predicts F01, F02, …, F28
     model s2 predicts F01, F02, …, F28
     model s3 predicts F01, F02, …, F28
@@ -87,50 +89,56 @@ that feature from predictions you have really big chance of overfitting unless y
     .
     .
     model s10 predicts F01, F02, …, F28
+```
 
-## Features
 Weekdays lags
 Rolling lags
 Calendar features and events 
 Price features
 
+## Features
+
+
 Features
 We used the following features. All features are concatenated and fed to the network.
 
-Sale values
-Lag 1 value
-Moving average of 7, 28 days
-Calendar: all values are normalized to [-0.5,0.5]
-wday
-month
-year
-week number
-day
-Event
-Event type : use embedding
-Event name : use embedding
-SNAP : [0, 1]
-Price
-raw value
-Normalized across time
-Normalized within the same dept_id
-Category
-stateid, storeid, catid, deptid, item_id : use embedding
-Zero sales
-Continuous zero-sale days until today
+* Sale values
+   * Lag 28-42 days
+   * Rolling mean and std - 7, 14, 30, 60, 180 days
+   * Rolling mean of a window size of [7,14,30,60] over column [lag_1, lag_7, lag_14]
 
+* Calendar: all values are normalized to [-0.5,0.5]
+   * day
+   * week
+   * month
+   * year
+   * week of month
+   * day of week
+   * weekend
+  
+* Event
+   * Event type : [SuperBowl, ValentinesDay, PresidentsDay, LentStart, LentWeek2, StPatricksDay, Purim End, OrthodoxEaster,
+   Pesach End, Cinco De Mayo, Mother's day, MemorialDay, NBAFinalsStart, NBAFinalsEnd, Father's day, IndependenceDay, Ramadan starts, Eid al-Fitr, LaborDay, ColumbusDay, Halloween, EidAlAdha, VeteransDay, Thanksgiving, Christmas, Chanukah End, NewYear,
+OrthodoxChristmas, MartinLutherKingDay, Easter]
+   * Event name : [Sporting, Cultural, National, Religious]
 
-5) 
-```
+* Supplement Nutrition Assistance Program (SNAP) : [0, 1]
+  
+* Price
+ 
+* Category
+   * stateid, storeid, catid, deptid, item_id 
 
 ## Other ideas
 
-```
-1) Validation
+
+* Validation
+   * 5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
+
 https://stats.stackexchange.com/questions/14099/using-k-fold-cross-validation-for-time-series-model-selection
-5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
 
 2) Model split
+```
 for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
   for each dept (7 departments - HOBBIES_1, HOBBIES_2, HOUSEHOLD_1, HOUSEHOLD_2, FOODS_1, FOODS_2, FOODS_3)
     model d1 predicts F01, F02, …, F28
@@ -140,7 +148,8 @@ for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2
     .
     .
     model 7 predicts F01, F02, …, F28
-    
+```
+```
 for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
   for each cat (3 Categories - HOBBIES, HOUSEHOLD, FOODS)
     model c1 predicts F01, F02, …, F28

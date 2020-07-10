@@ -6,6 +6,24 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 ## Implementation
 
+Recursive features
+
+Rollings are calculated this way because we need to update our Target before rolling calculations.
+
+Example:
+
+We need to predict day 1920
+We have rolling mean feature with 7 days window
+To calculate such feature we need Target for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
+With training set in our hands we have only Target for day 1913 (Test set Target is Nan)
+Thats why we do recursive predictions and rolling calculations for 1914, 1915, 1916, 1917, 1918, 1919 … days.
+-- Predict day 1914
+-- calculate rollings for 1915, predict 1915
+-- calculate rollings for 1916, predict 1916
+etc
+
+To avoid Nans and feed our model with somehow valuable information.
+
 
 ```
 1) Model

@@ -8,6 +8,8 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
 
+ss
+
 Explanation:
 
 * We need to predict day 1920

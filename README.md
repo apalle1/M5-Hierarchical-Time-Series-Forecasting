@@ -4,16 +4,11 @@ How much camping gear will one store sell each month in a year? To the uninitiat
 
 In this Makridakis competition, the fifth iteration, we are given hierarchical sales data for Walmart, the world’s largest company by revenue, to forecast daily sales for the next 28 days. The data, covers stores in three US States (California, Texas, and Wisconsin) and includes item level, department, product categories, and store details. In addition, it has explanatory variables such as price, promotions, day of the week, and special events. Together, this robust dataset can be used to improve forecasting accuracy.
 
-## Implementation
-
-## Recursive features
-
+## Recursive features - Update Target before lag/rolling calculations.
 
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
 
-Rollings are calculated this way because we need to update our Target before rolling calculations.
-
-Example:
+Explanation:
 
 * We need to predict day 1920
 * We have rolling mean feature with 7 days window

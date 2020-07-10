@@ -11,7 +11,7 @@ is used as an input for making a prediction on the following time step. An advan
 is that only one model is required, saving significant computational time, especially when a large number of time
 series and forecast horizons are involved.
 
-In below example, by predicting d_1914 you can calculate your features for d_1915 and so on…
+In below example, by predicting d_1914 we can calculate features for predicting d_1915 and so on…
 
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
 
@@ -70,16 +70,16 @@ that feature from predictions you have really big chance of overfitting unless y
 * Captures the information regarding the sales of the entire previous 4 weeks ending 4 weeks in the past i.e. if we are at day 56, then the average is of days 1-28. (Assuming for simplicity the month is 28 days), the idea again is to bring the point value of lag_28 into a better context (i.e. of day 28 when being compared to day 56) into a "better monthly context".
 
 ## Model
-LightGBM (single model)
-objective = tweedie
-Tweedie regression - These models are designed to deal with right-skewed data with most of the data distribution "concentrated" around 0. 
-If you think the underlying data has a tweedie-distribution, you might want to use tweedie regression.
+
+* LightGBM (single model)
+* objective = tweedie
+   * Tweedie regression - These models are designed to deal with right-skewed data with most of the data distribution "concentrated" around 0. If you think the underlying data has a tweedie-distribution, you might want to use tweedie regression.
 
 ## Validation
-1 holdout (d1914-d1941)
+* 1 holdout (d1914-d1941)
 
 ## Model split
-for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
+* for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
     model s1 predicts F01, F02, …, F28
     model s2 predicts F01, F02, …, F28
     model s3 predicts F01, F02, …, F28

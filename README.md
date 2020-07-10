@@ -8,16 +8,16 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 
 ```
-* 1) Model
+1) Model
 LightGBM (single model)
 objective = tweedie
 Tweedie regression - These models are designed to deal with right-skewed data with most of the data distribution "concentrated" around 0. 
 If you think the underlying data has a tweedie-distribution, you might want to use tweedie regression.
 
-* 2) Validation
+2) Validation
 1 holdout (d1914-d1941)
 
-* 3) Model split
+3) Model split
 for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
     model s1 predicts F01, F02, …, F28
     model s2 predicts F01, F02, …, F28
@@ -27,7 +27,7 @@ for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2
     .
     model s10 predicts F01, F02, …, F28
 
-* 4)Features
+4)Features
 Weekdays lags
 Rolling lags
 Calendar features and events 
@@ -59,7 +59,7 @@ Zero sales
 Continuous zero-sale days until today
 
 
-* 5) Recursive training strategy
+5) Recursive training strategy
 The recursive strategy involves using a one-step model multiple times where the prediction for the prior time step
 is used as an input for making a prediction on the following time step. An advantage of using the recursive strategy
 is that only one model is required, saving significant computational time, especially when a large number of time
@@ -69,11 +69,11 @@ series and forecast horizons are involved.
 ## Other ideas
 
 ```
-**Validation**
+1 Validation
 https://stats.stackexchange.com/questions/14099/using-k-fold-cross-validation-for-time-series-model-selection
 5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
 
-**Model split**
+2 Model split
 for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2, WI_3)
   for each dept (7 departments - HOBBIES_1, HOBBIES_2, HOUSEHOLD_1, HOUSEHOLD_2, FOODS_1, FOODS_2, FOODS_3)
     model d1 predicts F01, F02, …, F28

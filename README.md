@@ -12,7 +12,8 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 LightGBM (single model)
 objective = tweedie
 
-Tweedie regression - These models are designed to deal with right-skewed data with most of the data distribution "concentrated" around 0. If you think the underlying data has a tweedie-distribution, you might want to use tweedie regression.
+Tweedie regression - These models are designed to deal with right-skewed data with most of the data distribution "concentrated" around 0. 
+If you think the underlying data has a tweedie-distribution, you might want to use tweedie regression.
 
 **Validation**
 1 holdout (d1914-d1941)

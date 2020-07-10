@@ -23,6 +23,7 @@ Detailed Explanation:
 
 To avoid Nans and feed our model with somehow valuable information.
 
+The above table was just an example to show the idea behind iterative prediction. I don't use lags under 7 in my model. If you use recent demand values, the model will predict almost the same values for the next 28 days. And lag_1 seems to be the worst one to be added. If you use recent demand values, for example lag_1, the model will give high importance to that feature. Then if you are using predictions to make other predictions from period t0 to t28 each time you predict you will increase the error of the prediction. As your model consider that lag_1 is a strong feature and you are extracting that feature from predictions you have really big chance of overfitting unless your model is really, really good.
 
 ```
 1) Model

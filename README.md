@@ -8,7 +8,7 @@ In this Makridakis competition, the fifth iteration, we are given hierarchical s
 
 
 ```
-**Model**
+* **Model**
 LightGBM (single model)
 objective = tweedie
 

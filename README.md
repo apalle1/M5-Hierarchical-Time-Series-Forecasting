@@ -128,7 +128,7 @@ OrthodoxChristmas, MartinLutherKingDay, Easter]
 
 
 * Validation
-   * 5 holdout (d1578-d1605, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
+   * 5 holdout (d1802-d1829, d1830-d1857, d1858-d1885, d1886-d1913, d1914-d1941)
 
 https://stats.stackexchange.com/questions/14099/using-k-fold-cross-validation-for-time-series-model-selection
 

@@ -17,9 +17,9 @@ In below example, by predicting d_1914 we can calculate features for predicting 
 
 Detailed Explanation:
 
-* Assume that we need to predict day 1920
-* We have a feature - rolling mean with 7 days window
-* To calculate such feature we need Target for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
+* Assume that we want to predict day 1920
+* We have a feature rolling_mean_1_7 which is rolling mean with 7 days window
+* To calculate this feature we need Target for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
 * With training set in our hands we have only Target for day 1913 (Test set Target is Nan)
 * Thats why we do recursive predictions and rolling calculations for 1914, 1915, 1916, 1917, 1918, 1919 … days.
     * calculate rollings for 1914, Predict 1914

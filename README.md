@@ -19,12 +19,12 @@ Detailed Explanation:
 
 * Assume that we want to predict sales for day 1920
 * We will need rolling_mean_1_7 (rolling mean for a window of 7 days) as an input feature to our model
-* To calculate this feature we need sales/Target for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
-* With training set in our hands we have only sales/Target for day 1913 
+* To calculate this feature we need sales for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
+* With training set in our hands we have only sales for day 1913 
 * Thats why we do recursive predictions and rolling calculations for 1914, 1915, 1916, 1917, 1918, 1919 … days.
     * calculate rollings for day 1914, predict sales for day 1914
-    * calculate rollings for day1915, predict sales for day 1915
-    * calculate rollings for day1916, predict sales for day 1916 etc
+    * calculate rollings for day 1915, predict sales for day 1915
+    * calculate rollings for day 1916, predict sales for day 1916 etc
 * We avoid Nans and feed our model with valuable information.
 
 The above table was just an example to show the idea behind recursive prediction. I don't use lags under 7 in my model.

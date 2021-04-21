@@ -93,8 +93,6 @@ for each store (10 stores - CA_1, CA_2, CA_3, CA_4, TX_1, TX_2, TX_3, WI_1, WI_2
 
 ## Features
 
-
-Features
 We used the following features. All features are concatenated and fed to the network.
 
 * Sale values

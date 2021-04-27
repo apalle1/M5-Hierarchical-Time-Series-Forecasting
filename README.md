@@ -11,7 +11,7 @@ is used as an input for making a prediction on the following time step. An advan
 is that only one model is required, saving significant computational time, especially when a large number of time
 series and forecast horizons are involved.
 
-In below example, by predicting d_1914 we can calculate features for predicting d_1915 and so on…
+Iterative feature engineering is the key. In below example, by predicting d_1914 we can calculate features for predicting d_1915 and so on…
 
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
 

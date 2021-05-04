@@ -4,36 +4,6 @@ How much camping gear will one store sell each month in a year? To the uninitiat
 
 In this Makridakis competition, the fifth iteration, we are given hierarchical sales data for Walmart, the world’s largest company by revenue, to forecast daily sales for the next 28 days. The data, covers stores in three US States (California, Texas, and Wisconsin) and includes item level, department, product categories, and store details. In addition, it has explanatory variables such as price, promotions, day of the week, and special events. Together, this robust dataset can be used to improve forecasting accuracy.
 
-## Recursive features - Update Target before lag/rolling calculations.
-
-The recursive strategy involves using a one-step model multiple times where the prediction for the prior time step
-is used as an input for making a prediction on the following time step. An advantage of using the recursive strategy
-is that only one model is required, saving significant computational time, especially when a large number of time
-series and forecast horizons are involved.
-
-Iterative feature engineering is the key. In below example, by predicting d_1914 we can calculate features for predicting d_1915 and so on…
-
-![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
-
-Detailed Explanation:
-
-* Assume that we want to predict sales for day 1920
-* We will need rolling_mean_1_7 (rolling mean for a window of 7 days) as an input feature to our model
-* To calculate this feature we need sales for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
-* With training set in our hands we have only sales for day 1913 
-* Thats why we do recursive predictions and rolling calculations for 1914, 1915, 1916, 1917, 1918, 1919 … days.
-    * calculate rollings for day 1914, predict sales for day 1914
-    * calculate rollings for day 1915, predict sales for day 1915
-    * calculate rollings for day 1916, predict sales for day 1916 etc
-* We avoid Nans and feed our model with valuable information.
-
-The above table was just an example to show the idea behind recursive prediction. I don't use lags under 7 in my model.
-If you use recent demand values, the model will predict almost the same values for the next 28 days. And lag_1 seems to 
-be the worst one to be added. If you use recent demand values, for example lag_1, the model will give high importance to
-that feature. Then if you are using predictions to make other predictions from period t0 to t28 each time you predict
-you will increase the error of the prediction. As your model consider that lag_1 is a strong feature and you are extracting
-that feature from predictions you have really big chance of overfitting unless your model is really, really good.
-
 ## Lag & Rolling Window Features:
 
 https://machinelearningmastery.com/basic-feature-engineering-time-series-data-python/
@@ -66,6 +36,36 @@ https://machinelearningmastery.com/basic-feature-engineering-time-series-data-py
 * 5. Captures the information regarding the sales of the whole week ending 4 weeks ago i.e. if we are on day 35, then the average is of sales from day 1-7. (Assuming for simplicity the month is 28 days), this provides the information of not just a month-to-month comparison of the same day (day 7 of month one vs day 7 of month two), but the entire week leading up to day 7. Again the idea I believe is to capture the whole week and not just a single day sale comparison like lag_28 to bring the lag_28 value into "better weekly context".
 
 * 6. Captures the information regarding the sales of the entire previous 4 weeks ending 4 weeks in the past i.e. if we are at day 56, then the average is of days 1-28. (Assuming for simplicity the month is 28 days), the idea again is to bring the point value of lag_28 into a better context (i.e. of day 28 when being compared to day 56) into a "better monthly context".
+
+## Recursive features - Update Target before lag/rolling calculations.
+
+The recursive strategy involves using a one-step model multiple times where the prediction for the prior time step
+is used as an input for making a prediction on the following time step. An advantage of using the recursive strategy
+is that only one model is required, saving significant computational time, especially when a large number of time
+series and forecast horizons are involved.
+
+Iterative feature engineering is the key. In below example, by predicting d_1914 we can calculate features for predicting d_1915 and so on…
+
+![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Recursive%20Features.PNG)
+
+Detailed Explanation:
+
+* Assume that we want to predict sales for day 1920
+* We will need rolling_mean_1_7 (rolling mean for a window of 7 days) as an input feature to our model
+* To calculate this feature we need sales for days 1913, 1914, 1915, 1916, 1917, 1918, 1919
+* With training set in our hands we have only sales for day 1913 
+* Thats why we do recursive predictions and rolling calculations for 1914, 1915, 1916, 1917, 1918, 1919 … days.
+    * calculate rollings for day 1914, predict sales for day 1914
+    * calculate rollings for day 1915, predict sales for day 1915
+    * calculate rollings for day 1916, predict sales for day 1916 etc
+* We avoid Nans and feed our model with valuable information.
+
+The above table was just an example to show the idea behind recursive prediction. I don't use lags under 7 in my model.
+If you use recent demand values, the model will predict almost the same values for the next 28 days. And lag_1 seems to 
+be the worst one to be added. If you use recent demand values, for example lag_1, the model will give high importance to
+that feature. Then if you are using predictions to make other predictions from period t0 to t28 each time you predict
+you will increase the error of the prediction. As your model consider that lag_1 is a strong feature and you are extracting
+that feature from predictions you have really big chance of overfitting unless your model is really, really good.
 
 ## Model
 

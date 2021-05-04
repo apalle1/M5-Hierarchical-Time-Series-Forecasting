@@ -44,7 +44,7 @@ https://machinelearningmastery.com/basic-feature-engineering-time-series-data-py
 
 **First off what each feature mathematically does**
 
-* 'lag_7': sales shifted 7 steps downwards for each group. The example above focuses on one group only as an example. That is why the first value appears on the 7th index.
+* `lag_7`: sales shifted 7 steps downwards for each group. The example above focuses on one group only as an example. That is why the first value appears on the 7th index.
 * **lag_28**: sales shifted 28 steps downwards. That is why the first value appears on the 28th index.
 * **rmean_7_7**: rolling mean sales of a window size of 7 over column lag_7. First value (0.2857) appears on the 13th index because means including nan are nan.
 * **rmean_7_28**: rolling mean sales of a window size of 28 over column lag_7. First value (0.357) appears on the 34th index because that is the first time the mean formula gets all 28 non-nan values.

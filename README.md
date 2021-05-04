@@ -34,24 +34,22 @@ that feature. Then if you are using predictions to make other predictions from p
 you will increase the error of the prediction. As your model consider that lag_1 is a strong feature and you are extracting
 that feature from predictions you have really big chance of overfitting unless your model is really, really good.
 
-## Lag Features & Rolling Window Statistics:
+## Lag & Rolling Window Features:
+
+https://machinelearningmastery.com/basic-feature-engineering-time-series-data-python/
+
+**I found the idea of using lag and rolling window features fascinating. So here are the notes and the "intuition" behind it:**
 
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Lag-Rolling%20Features.png)
 
-
 **First off what each feature mathematically does**
 
-* lag_7: sales shifted 7 steps downwards for each group. That is why the first value appears on the 7th index.
-
-* lag_28: sales shifted 28 steps downwards. That is why the first value appears on the 28th index.
-
-* rmean_7_7: rolling mean sales of a window size of 7 over column lag_7. First value (0.2857) appears on the 13th index because means including nan are nan.
-
-* rmean_7_28: rolling mean sales of a window size of 28 over column lag_7. First value (0.357) appears on the 34th index because that is the first time the mean formula gets all 28 non-nan values.
-
-* rmean_28_7: rolling mean sales of a window size of 7 over column lag_28. First value (0.2857) appears on the 3th index because it is the first time the mean formula gets 7 non-nan values.
-
-* rmean_28_28: rolling mean sales of a window size of 28 over column lag_28. First value appears on 55th index because that is the first time the formula here all non-nan values.
+* 'lag_7': sales shifted 7 steps downwards for each group. The example above focuses on one group only as an example. That is why the first value appears on the 7th index.
+* **lag_28**: sales shifted 28 steps downwards. That is why the first value appears on the 28th index.
+* **rmean_7_7**: rolling mean sales of a window size of 7 over column lag_7. First value (0.2857) appears on the 13th index because means including nan are nan.
+* **rmean_7_28**: rolling mean sales of a window size of 28 over column lag_7. First value (0.357) appears on the 34th index because that is the first time the mean formula gets all 28 non-nan values.
+* **rmean_28_7**: rolling mean sales of a window size of 7 over column lag_28. First value (0.2857) appears on the 3th index because it is the first time the mean formula gets 7 non-nan values.
+* **rmean_28_28**: rolling mean sales of a window size of 28 over column lag_28. First value appears on 55th index because that is the first time the formula here all non-nan values.
 
 **The intuition as far as I can understand is the following:**
 

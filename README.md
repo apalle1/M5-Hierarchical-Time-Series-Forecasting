@@ -12,7 +12,7 @@ https://machinelearningmastery.com/basic-feature-engineering-time-series-data-py
 
 ![alt text](https://github.com/apalle1/M5-Hierarchical-Time-Series-Forecasting/blob/master/Lag-Rolling%20Features.png)
 
-**First off what each feature mathematically does**
+**First off what each feature mathematically does:**
 
 * 1. `lag_7`: sales shifted 7 steps downwards for each group. The example above focuses on one group only as an example. That is why the first value appears on the 7th index.
 * 2. `lag_28`: sales shifted 28 steps downwards. That is why the first value appears on the 28th index.

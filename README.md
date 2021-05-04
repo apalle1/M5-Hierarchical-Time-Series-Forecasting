@@ -51,13 +51,13 @@ https://machinelearningmastery.com/basic-feature-engineering-time-series-data-py
 * 5. `rmean_28_7`: rolling mean sales of a window size of 7 over column `lag_28`. First value (0.2857) appears on the 3th index because it is the first time the mean formula gets 7 non-nan values.
 * 6. `rmean_28_28`: rolling mean sales of a window size of 28 over column `lag_28`. First value appears on 55th index because it is the first time the mean formula gets 28 non-nan values.
 
-**The intuition is the following:**
+**The intuition behing the lag features is the following:**
 
 * 1. Captures the week-on-week similarity and that too of just the past week. In other words, people are likely to shop this monday similar to the last monday (except it is some special occassion).
 
 * 2. Captures the weekly similarity from a month-to-month perspective. Example: people in the 1st weekend of a month shop more so that weekend looks more similar to first weeks of other months than the previous weekend. (Though 28 is arguable here. A month is generally 30. Interesting would be a variable window depending on when the comparative week starts. Dealing with edge cases like week divided into 2 months will be tricky).
 
-**Since individual data points are prone to erratic spikes or troughs, mean provides a more "representative" picture.**
+**The intuition behing the rolling mean features is that since individual data points are prone to erratic spikes or troughs, mean provides a more "representative" picture.**
 
 * 3. Captures the information regarding the sales of the whole previous week ending 7 days in the past i.e. if we are at day 14, then the average is of sales from days 1-7 NOT days 7-14. This provides the information about the whole week and not just a single day sale comparison like lag_7 to bring the lag_7 value into "better weekly context".
 
